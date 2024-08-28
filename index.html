@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Section</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+      }
+
+      .banner {
+        display: flex;
+        padding: 4rem 1rem;
+        max-width: 80rem;
+        margin: 0 auto;
+      }
+
+      .banner__content {
+        width: 100%;
+      }
+
+      .banner__title {
+        margin: 0 0 1rem;
+        font-size: 3rem;
+        line-height: 1;
+      }
+
+      .banner__text {
+        line-height: 1.5rem;
+      }
+
+      .banner__button-wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        /* Меня беспокоило, что при смене текста кнопка меняла свое расположение. Из-за этого я прижал её к верхней границе div. */
+        margin-bottom: auto;
+      }
+
+      .banner__button {
+        background-color: rgb(74 72 207);
+        color: #ffffff;
+        border-radius: 9999px;
+        border: none;
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+      }
+
+      @media (max-width: 1023px) {
+        .banner {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .banner__content {
+          margin-bottom: 1rem;
+        }
+
+        .banner__title {
+          font-size: 2.25rem;
+          line-height: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="banner">
+      <div class="banner__content">
+        <h2 class="banner__title" id="title">
+          Аналитика и продвижение на Wildberries и Ozon
+        </h2>
+        <span class="banner__text" id="text">
+          Бесплатный доступ к данным по всем категориям товаров в реальном
+          времени
+        </span>
+      </div>
+      <div class="banner__button-wrapper">
+        <button class="banner__button" id="actionButton">Клик (0)</button>
+      </div>
+    </section>
+
+    <script>
+      const titleElement = document.getElementById("title");
+      const textElement = document.getElementById("text");
+      const buttonElement = document.getElementById("actionButton");
+      let clickCount = 0;
+
+      buttonElement.addEventListener("click", () => {
+        const temp = titleElement.textContent;
+        titleElement.textContent = textElement.textContent;
+        textElement.textContent = temp;
+
+        clickCount++;
+        buttonElement.textContent = `Клик (${clickCount})`;
+      });
+    </script>
+  </body>
+</html>
